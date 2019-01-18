@@ -15,15 +15,21 @@ There are a few parameters availble for this module:
 
 ### manage_package
 Type: Boolean
+
 Default: True
+
 Action: True will make the module manage the package installation. 
 
 ### selinux_enabled
 Type: Boolean
+
 Default: True
+
 Action: True will update SELINUX to ensure the AV scanner will run correctly.
 
 ### cron_scheduled_updates
 Type: Boolean
+
 Default: True
+
 Action: Will schedule the clamav updates.

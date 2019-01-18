@@ -27,8 +27,8 @@ class clamav (
     cron { 'clamav-update':
       command => '/bin/freshclam -v --no-warnings > /var/log/freshclam.log',
       user    => 'root',
-      hour    => fqdn_rand(23),
-      minute  => fqdn_rand(60),
+      hour    => fqdn_rand(23, 'clamav-update'),
+      minute  => fqdn_rand(60, 'clamav-update'),
       weekday => 0,
     }
   }
@@ -36,8 +36,8 @@ class clamav (
   cron { 'scheduled_scan':
       command => 'clamscan / -ir --exclude-dir=^/run --exclude-dir=^/opt --exclude-dir=^/proc --exclude-dir=^/sys --exclude-dir=^/dev | logger -t clamav',
       user    => 'root',
-      hour    => fqdn_rand(23),
-      minute  => fqdn_rand(60),
+      hour    => fqdn_rand(23, 'scheduled_scan'),
+      minute  => fqdn_rand(60, 'scheduled_scan'),
   }
 
 }

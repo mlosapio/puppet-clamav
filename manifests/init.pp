@@ -36,7 +36,7 @@ class clamav (
   cron { 'scheduled_scan':
       command => 'clamscan / -ir --exclude-dir=^/run --exclude-dir=^/opt --exclude-dir=^/proc --exclude-dir=^/sys --exclude-dir=^/dev | logger -t clamav',
       user    => 'root',
-      hour    => ' fqdn_rand(23),
+      hour    => fqdn_rand(23),
       minute  => fqdn_rand(60),
   }
 

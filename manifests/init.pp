@@ -13,13 +13,13 @@ class clamav (
   if $selinux_enabled {
     exec { 'setbool_virus_scan':
         cwd     => '/',
-        command => 'setsebool -P antivirus_can_scan_system on',
-        unless  => "getsebool -a | grep 'antivirus_can_scan_system --> on'",
+        command => '/sbin/setsebool -P antivirus_can_scan_system on',
+        unless  => "/sbin/getsebool -a | /bin/grep 'antivirus_can_scan_system --> on'",
     }
     exec { 'clamav_jit_selinux':
         cwd => '/',
-        command => 'setsebool -P clamd_use_jit on',
-        unless  => "getsebool -a |  'antivirus_use_jit --> on'",
+        command => '/sbin/setsebool -P clamd_use_jit on',
+        unless  => "/sbin/getsebool -a | /bin/grep 'antivirus_use_jit --> on'",
     }
   }
 
